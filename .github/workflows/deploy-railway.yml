@@ -11,9 +11,13 @@ on:
 concurrency:
   group: deploy-railway-${{ github.ref }}
   cancel-in-progress: false
+permissions:
+  contents: read
+
 jobs:
   relay:
     if: github.repository == 'terrafying/ai-torture-chamber'
+    timeout-minutes: 30
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
